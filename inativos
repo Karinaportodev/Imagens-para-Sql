@@ -1,0 +1,9 @@
+SELECT 
+  meses_inativo_12m,
+  COUNT(*) AS qtd_clientes,
+  ROUND(AVG(limite_credito), 2) AS media_limite,
+  ROUND(AVG(valor_transacoes_12m), 2) AS media_gasto
+FROM default.credito
+WHERE meses_inativo_12m IS NOT NULL
+GROUP BY meses_inativo_12m
+ORDER BY meses_inativo_12m;
